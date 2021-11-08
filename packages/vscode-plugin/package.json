@@ -10,16 +10,46 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vika-i18n.helloWorld"
+    "onCommand:vika-i18n.replaceTextWithKey"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vika-i18n.helloWorld",
+        "command": "vika-i18n.replaceTextWithKey",
         "title": "Hello World"
       }
-    ]
+    ],
+    "keybindings": [
+      {
+        "command": "vika-i18n.replaceTextWithKey",
+        "key": "ctrl+oem_1",
+        "mac": "cmd+oem_1",
+        "when": "editorHasSelection"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "vika-i18n.replaceTextWithKey",
+          "when": "editorHasSelection"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Vika I18N Configuration",
+      "properties": {
+        "vika-i18n.datasheetId": {
+          "type": "string",
+          "description": "i18n string 表ID"
+        },
+        "typescript.api_token": {
+          "type": "string",
+          "description": "API Token"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
